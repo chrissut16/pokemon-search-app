@@ -8,7 +8,7 @@ function App() {
 
   const [results, setResults] = useState ([])
   const [searchBar, setSearchBar] = useState('');
-  const [data, setData] = useState([])
+
 
   const pokemonListUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=10'
 
@@ -28,20 +28,15 @@ function App() {
     });
   }
 
-  const infoDetails = async (pokemon) => {
-    const pokemonURL = await axios.get(pokemon)
-    setData(pokemonURL.data)
-  }
-
   useEffect(() => {
     pokemonList();
-    }, [pokemonListUrl]);
+    }, []);
 
     return (
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<SearchPage infoDetails={infoDetails} searchBar={searchBar} setSearchBar={setSearchBar} results={results} />} />
-            <Route path="/:name" element={<DetailsPage poke={data}/>} />
+            <Route path="/" element={<SearchPage searchBar={searchBar} setSearchBar={setSearchBar} results={results} />} />
+            <Route path="/:name" element={<DetailsPage />} />
           </Routes>
         </BrowserRouter>
     )

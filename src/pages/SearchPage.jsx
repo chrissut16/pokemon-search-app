@@ -2,7 +2,7 @@ import SearchBar from '../components/SearchBar'
 import SearchButton from '../components/SearchButton.jsx'
 import PokemonList from '../components/PokemonList.jsx';
 
-function SearchPage({ infoDetails, searchBar, setSearchBar, results }) {
+function SearchPage({ searchBar, setSearchBar, results }) {
     return(
     <>
         <div className='box-border justify-center flex p-5 bg-white text-sky-700 font-bold text-lg w-full h-fit inset-x-0 top-0 z-50 shadow-md fixed'>
@@ -15,7 +15,7 @@ function SearchPage({ infoDetails, searchBar, setSearchBar, results }) {
                     <SearchButton />
                 </div>
                 <div className='flex flex-wrap justify-between items-center w-[1000px]'>
-                    <PokemonList results={results} infoDetails={infoDetails} />
+                    <PokemonList results={results} />
                 </div>
             </div>
         </div>

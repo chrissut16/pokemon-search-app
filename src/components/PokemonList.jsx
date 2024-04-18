@@ -1,6 +1,6 @@
 import {useNavigate } from "react-router-dom";
 
-const PokemonList = ({ infoDetails, results }) => {
+const PokemonList = ({ results }) => {
     const navigate = useNavigate();
     return (
         <>
@@ -20,7 +20,6 @@ const PokemonList = ({ infoDetails, results }) => {
                 <button
                     className="self-start flex text-sky-600 hover:scale-105 duration-300"
                     onClick={() => {
-                        infoDetails(pokemon.url);
                         navigate(`/${pokemon.name}`);
                     }}
                     >
