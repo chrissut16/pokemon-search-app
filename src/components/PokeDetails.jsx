@@ -4,13 +4,13 @@ const PokeDetails = ({ poke }) => {
     return( 
         <>
         <div 
-            className="flex flex-col bg-white p-4 capitalize gap-3 h-fit w-[350px] rounded-lg shadow">
+            className="flex flex-col bg-white p-4 capitalize gap-3 h-fit w-[350px] rounded-lg shadow leading-5">
             <img 
                 src={`https://img.pokemondb.net/artwork/large/${poke?.name}.jpg`} 
                 alt="pokemon.jpg"
                 className="w-[200px] self-center mb-4">
             </img>
-            <div className="flex space-x-1">
+            <div className="flex gap-1">
                 <div className="font-bold">
                     Name:
                 </div>
@@ -18,7 +18,7 @@ const PokeDetails = ({ poke }) => {
                     {poke?.name}
                 </div>
             </div>
-            <div className="flex space-x-1">
+            <div className="flex gap-1">
                 <div className="font-bold">
                     Types:
                 </div>
@@ -28,7 +28,7 @@ const PokeDetails = ({ poke }) => {
                     </div>
                 )}
             </div>
-            <div className="flex gap-1">
+            <div className="flex flex-wrap gap-1">
                 <div className="font-bold">
                     Abilities:
                 </div>
