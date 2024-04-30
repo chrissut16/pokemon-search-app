@@ -10,20 +10,25 @@ function App() {
   const [searchBar, setSearchBar] = useState('');
   const [offset, setOffset] = useState(0)
   const [searchResult, setSearchResult] = useState([])
+  const [error, setError] = useState(false)
 
   const pokemonListUrl = `https://pokeapi.co/api/v2/pokemon/?limit=10&offset=${offset}`
   const pokemonSearchUrl = `https://pokeapi.co/api/v2/pokemon/${searchBar}`
 
   const pokemonSearch = async () => {
-    const response = await axios.get(pokemonSearchUrl)
-    setSearchResult(response.data.name)
-    console.log(searchBar)
+    try {
+      const response = await axios.get(pokemonSearchUrl)
+      setSearchResult(response.data.name)
+      setError(false)
+    } catch (error) {
+      setSearchResult(searchBar)
+      setError(true)
+    }
   }
 
   const pokemonList = async () => {
     const response = await axios.get (pokemonListUrl)
     getPokemon(response.data.results)
-    // console.log(response)
   }
 
   const getPokemon = (response) => {
@@ -46,7 +51,7 @@ function App() {
     return (
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<SearchPage searchBar={searchBar} setSearchBar={setSearchBar} results={results} loadMore={loadMore} pokemonSearch={pokemonSearch} pokeName={searchResult} />} />
+            <Route path="/" element={<SearchPage searchBar={searchBar} setSearchBar={setSearchBar} results={results} loadMore={loadMore} pokemonSearch={pokemonSearch} pokeName={searchResult} error={error} />} />
             <Route path="/:name" element={<DetailsPage />} />
           </Routes>
         </BrowserRouter>

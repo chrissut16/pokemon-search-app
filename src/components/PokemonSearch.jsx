@@ -1,11 +1,17 @@
 import {useNavigate } from "react-router-dom";
 
-const PokemonSearch = ({ pokeName }) => {
+const PokemonSearch = ({ pokeName, error }) => {
     const navigate = useNavigate();
+
     return (
         <>
+            {error ? (
+                <div 
+                    className="font-bold text-lg text-sky-900"
+                    >Pokemon not found!
+                </div>
+            ) : (
             <div 
-                key={pokeName}
                 className="flex flex-col justify-between items-center rounded-lg bg-white w-[300px] h-[450px] p-6 shadow">
                 <img 
                     src={`https://img.pokemondb.net/artwork/large/${pokeName}.jpg`} 
@@ -14,7 +20,7 @@ const PokemonSearch = ({ pokeName }) => {
                 ></img>
                 <p 
                     className="self-start capitalize font-bold text-lg text-sky-900"
-                    >{pokeName} 
+                    >{pokeName}
                 </p>
                 <button
                     className="self-start flex text-sky-600 hover:scale-105 duration-300"
@@ -28,6 +34,7 @@ const PokemonSearch = ({ pokeName }) => {
                     </svg>
                 </button>
             </div>
+            )}
         </>
     )
 }
